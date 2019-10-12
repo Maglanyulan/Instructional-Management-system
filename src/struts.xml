@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <package name="default"  namespace="/" extends="struts-default">
+		<action name="Login_*" class="action.LoginAction" method="{1}" >
+			<result name="stu_login_success" >/users/Student_login.jsp</result>
+			<result name="tea_login_success">/users/Teacher_login.jsp</result>
+			<result name="admin_login_success">/users/Admin_login.jsp</result>
+		    <result name="login_fail">/users/Users_login.jsp</result>
+		    <result name="logout_success">/users/Users_login.jsp</result>
+	    </action>
+	    
+	    <action name="Admin_*" class="action.AdminAction" method ="{1}">
+	    	<result name="stu_query">/admin/Students_query_success.jsp</result> 
+		    <result name="stu_delete" type="chain">Admin_stuquery</result>  
+		    <result name="stu_add" >/admin/Students_add_success.jsp</result> 
+		   	<result name="stu_modify" >/admin/Students_modify.jsp</result> 
+		   	<result name="stu_save" >/admin/Students_modify_success.jsp</result> 
+
+		    <result name="tea_query">/admin/Teachers_query_success.jsp</result> 
+		    <result name="tea_delete" type="chain">Admin_teaquery</result>
+		    <result name="tea_add" >/admin/Teachers_add_success.jsp</result> 
+		   	<result name="tea_modify" >/admin/Teachers_modify.jsp</result> 
+		   	<result name="tea_save" >/admin/Teachers_modify_success.jsp</result>
+		   	
+		   	<result name="college_list">/admin/trainplanlist.jsp</result>			
+			<result name="major_list">/admin/trainplanlist_major.jsp</result>			
+			<result name="else_list">/admin/trainplanlist_else.jsp</result>			
+			<result name="add_trainplan_success">/admin/trainplan_add_success.jsp</result>
+			<result name="loginpage_PY">/admin/trainplanlist.jsp</result>
+			
+			<result name="major_query">/admin/major_info.jsp</result> 
+		    <result name="major_delete" type="chain">Admin_majorquery</result>  
+		    <result name="major_add" >/admin/major_add_success.jsp</result> 
+		    <result name="major_modify" >/admin/major_modify.jsp</result> 
+		    <result name="major_save" type="chain">Admin_majorquery</result>
+		    
+		    <result name="anno_query">/admin/anno_info.jsp</result> 
+		    <result name="anno_add" >/admin/anno_add_success.jsp</result>
+		    <result name="anno_delete" type="chain">Admin_annoquery</result>
+		    
+		    <result name="recru_query">/admin/recru_info.jsp</result> 
+		    <result name="recru_add" >/admin/recru_add_success.jsp</result>
+		    <result name="recru_delete" type="chain">Admin_recruquery</result>
+		    <result name="PY_query">/admin/trainplan_query.jsp</result>
+		   
+	    </action>
+	    	
+	   	<action name="Student_*" class="action.StudentAction" method ="{1}">
+			<result name="query_score">/students/Score_query.jsp</result> 
+			<result name="query_course">/students/Course_query.jsp</result> 
+	   		<result name="query_stuinfo">/students/Students_query_success.jsp</result> 
+	   		<result name="select_course">/students/Course_select.jsp</result>
+	   		<result name="save_course" type="chain" >Student_querycourse</result>
+	   		<result name="make_course">/students/Course_makequery.jsp</result>
+	    </action>
+
+	    <action name="Teacher_*" class="action.TeacherAction" method ="{1}">
+	   		<result name="query_info">/teacher/Teachers_query.jsp</result> 
+	    
+	    	<result name="course_query">/teacher/Course_query_success.jsp</result>
+	    	<result name="course_add" type="chain">Teacher_coursequery</result>	
+	    	
+			<result name="Course_mylist">/teacher/Course_mylist.jsp</result>
+			<result name="score_quary">/teacher/Score_list.jsp</result>
+			<result name="Score_add">/teacher/Score_add_list.jsp</result>	
+			<result name="Score_save" type="chain" >Teacher_quaryscore</result>		
+	    </action>
+	    <action name="MainPage_*" method="{1}" class="action.MainPageAction">
+			<result name="loginpage_JX">/users/Users_login_jiaoxue.jsp</result>	
+			<result name="loginpage_JX_context">/contents/JX_content.jsp</result>		
+			<result name="loginpage_ZP">/users/Users_login_zhaoping.jsp</result>
+			<result name="loginpage_ZP_context">/contents/ZP_content.jsp</result>			
+			<result name="loginpage_PY_context">/contents/PY_content.jsp</result>			
+			<result name="loginpage_PY_title">/contents/PY_BySearchTitle.jsp</result>
+			<result name="loginpage_PY">/users/Users_login.jsp</result>
+		</action>
+	</package>
+	
+
+	
+</struts>
